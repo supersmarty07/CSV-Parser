@@ -10,7 +10,7 @@ class Row{
     }
 }
 //Algorithm to check validity of the code
-let validChars = ['2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C',  'D', 'E', 'F', 'G', 'H', 'J', 'K','L', 'M', 'N', 'P', 'Q', 'R', 'S', 'T',  'U', 'V', 'W', 'X', 'Y', 'Z']; 
+const validChars = ['2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C',  'D', 'E', 'F', 'G', 'H', 'J', 'K','L', 'M', 'N', 'P', 'Q', 'R', 'S', 'T',  'U', 'V', 'W', 'X', 'Y', 'Z']; 
 function verifyKey(key) 
 { 
 if (key.length != 10) 
@@ -23,7 +23,7 @@ function generateCheckCharacter(input)
 { 
 let factor = 2; 
 let sum = 0; 
-let n = validChars.length; 
+const n = validChars.length; 
 let codePoint; let addend;
  // Starting from the right and working leftwards is easier since  // the initial "factor" will always be "2" 
 for (let i = input.length - 1; i >= 0; i--) 
@@ -52,8 +52,8 @@ uploadDealcsv.prototype.getCsv = function(e) {
 
     if (this.files && this.files[0]) {
 
-    var myFile = this.files[0];
-        var reader = new FileReader();
+    let myFile = this.files[0];
+        let reader = new FileReader();
         
         reader.addEventListener('load', function (e) {
             
@@ -90,8 +90,8 @@ uploadDealcsv.prototype.getParsecsvdata = function(data) {
     //sorting date
     let rows = Object.values(obj);
     rows.sort(function compare(a, b) {
-        var dateA = new Date((a.date).slice(0, 14));
-        var dateB = new Date((b.date).slice(0, 14));
+        let dateA = new Date((a.date).slice(0, 14));
+        let dateB = new Date((b.date).slice(0, 14));
         return dateA - dateB;
     });
     rows.unshift(heading);
@@ -127,5 +127,5 @@ function createTable(data){
     createTable(rows);
 }
 //running the function
-var parseCsv = new uploadDealcsv();
+let parseCsv = new uploadDealcsv();
 parseCsv.getCsv();  
