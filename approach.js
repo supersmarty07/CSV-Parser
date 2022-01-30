@@ -1,6 +1,6 @@
 //Class Row that takes in the columns as its arguments
 class Row{
-    constructor(date, transactionCode, validity, cNumber, reference, amount){
+    constructor(date, transactionCode, cNumber, reference, amount, validity){
         this.date = date;
         this.transactionCode = transactionCode;
         this.validity = validity;
@@ -70,7 +70,7 @@ uploadDealcsv.prototype.getParsecsvdata = function(data) {
 
     let parsedata = [];
     let obj = {};
-    let headingColumns = ['Date', 'Transaction Code', 'Validity', 'Customer Number', 'Reference', 'Amount'];
+    let headingColumns = ['Date', 'Transaction Code', 'Customer Number', 'Reference', 'Amount', 'Validity'];
     let heading = new Row(...headingColumns);
     let keys = [];
 
@@ -88,7 +88,6 @@ uploadDealcsv.prototype.getParsecsvdata = function(data) {
         return acc;
     }, {});
 
-    console.log(obj);
     //sorting date
     let rows = Object.values(obj);
     rows.sort(function compare(a, b) {
@@ -97,7 +96,7 @@ uploadDealcsv.prototype.getParsecsvdata = function(data) {
         return dateA - dateB;
     });
     rows.unshift(heading);
-    
+    console.log(rows);
     for(let i = 0; i < rows.length; i++){
         rows[i].validity = verifyKey(rows[i].transactionCode);
     }
