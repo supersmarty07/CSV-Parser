@@ -79,7 +79,6 @@ uploadDealcsv.prototype.getParsecsvdata = function(data) {
         parsedata.push(newLinebrk[i].split(","))
     }
     array = parsedata.splice(1);
-    console.log(array);
     for(let i =0; i<array.length; i++){
         keys.push(i);
     }
@@ -96,12 +95,9 @@ uploadDealcsv.prototype.getParsecsvdata = function(data) {
         return dateA - dateB;
     });
     rows.unshift(heading);
-    console.log(rows);
     for(let i = 0; i < rows.length; i++){
         rows[i].validity = verifyKey(rows[i].transactionCode);
     }
-    console.log(rows);
-
 //function to create table
 function createTable(data){
     
